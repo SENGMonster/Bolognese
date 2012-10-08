@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    = render partial: 'layouts/head'
+  %body
+    #wrapper
+      %header
+        = render partial: 'layouts/header'
+      .content#content
+        = render partial: 'layouts/flash_message'
+        = yield
+      %footer.footer
+        = render partial: 'layouts/footer'
+

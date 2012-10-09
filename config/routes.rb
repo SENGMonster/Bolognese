@@ -1,5 +1,14 @@
 Lifetuning::Application.routes.draw do
 
+  resources :pictures
+
+  get "seminar/index"
+
+  get "seminar/show"
+
+  get "seminar/detail"
+
+  get "seminar/booking"
 
   ActiveAdmin.routes(self)
 

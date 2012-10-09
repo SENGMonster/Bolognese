@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121008195809) do
+ActiveRecord::Schema.define(:version => 20121009122520) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -70,6 +70,12 @@ ActiveRecord::Schema.define(:version => 20121008195809) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "infoitems", :force => true do |t|
     t.string   "title"
     t.string   "short_description"
@@ -84,12 +90,25 @@ ActiveRecord::Schema.define(:version => 20121008195809) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "pictures", :force => true do |t|
+    t.integer  "picturable_id"
+    t.string   "picturable_type"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "item_file_name"
+    t.string   "item_content_type"
+    t.integer  "item_file_size"
+    t.datetime "item_updated_at"
+    t.string   "name"
+  end
+
   create_table "seminars", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.string   "abschluss"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "category_id"
   end
 
   create_table "termines", :force => true do |t|

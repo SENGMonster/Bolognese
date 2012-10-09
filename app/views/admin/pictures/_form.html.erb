@@ -1,0 +1,14 @@
+ <%= semantic_form_for [:admin, @picture], :builder => ActiveAdmin::FormBuilder do |f|
+
+    puts f.object.errors.inspect     
+
+
+      f.inputs do
+        f.input :name
+        f.input :item, as: :file
+        # f.input :crleated_at, :label => "Cr-eate User At", :as => :datepicker,:input_html => { :style  => "width:100px;"}
+      end
+      
+      f.buttons
+    end 
+      %>

@@ -3,6 +3,7 @@ class SeminarController < ApplicationController
   end
 
   def show
+    @seminar=Seminar.find(params[:id])
   end
 
   def detail

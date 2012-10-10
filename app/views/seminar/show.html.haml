@@ -1,2 +1,12 @@
-%h1 Seminar#show
-%p Find me in app/views/seminar/show.html.haml
+%h1=@seminar.title
+%p=@seminar.description
+
+%h2="Termine"
+- @seminar.termines.each do |t|
+  %p="#{t.start_date} - #{t.end_date} in #{t.address.city}"
+
+- @seminar.infoitems.each do |i|
+  %h3= i. title
+  %p
+    =i.short_description
+    =link_to 'mehr..', '#' 

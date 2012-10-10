@@ -8,6 +8,7 @@
       #f.form_buffers.last << "<legend><span class='title_app_profil' id='user'><a href='#navigation'>User</a></span></legend>".html_safe
         f.input :category
         f.input :title
+        f.input :subtitle
         f.input :abschluss 
         f.input :description
         # f.input :crleated_at, :label => "Cr-eate User At", :as => :datepicker,:input_html => { :style  => "width:100px;"}
@@ -26,16 +27,15 @@
         item.input :address
       end
 
-      # semantic_form_for :pictures do |pic|
-      #   @picture=pic.object
-      #   render 'admin/pictures/form'
-      # end
+      f.has_many :prices do |item|
+        item.input :price
+        item.input :priceclass
+      end
 
-      # f.has_many :pictures do |item|
-      #   item.semantic_form_for 
-      #   @picture=item
-      #   render 'admin/pictures/form'
-      # end
+      f.has_many :pictures do |item|
+        item.input :name
+        item.input :item, as: :file
+      end
 
       
       f.buttons

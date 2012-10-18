@@ -10,15 +10,15 @@
         f.input :title
         f.input :subtitle
         f.input :abschluss 
-        f.input :description
+        f.input :description, :input_html => { :class => 'mceEditor', :size => "80x15" }
         # f.input :crleated_at, :label => "Cr-eate User At", :as => :datepicker,:input_html => { :style  => "width:100px;"}
       end
 
       f.has_many :infoitems do |item|
         item.input :title
         item.input :menu_title
-        item.input :short_description
-        item.input :description
+        item.input :short_description, :input_html => { :class => 'mceEditor', :size => "80x15" }
+        item.input :description,  :input_html => { :class => 'mceEditor', :size => "80x15" }
       end
 
       f.has_many :termines do |item|

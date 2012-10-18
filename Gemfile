@@ -12,7 +12,7 @@ gem 'paperclip'
 gem 'devise'
 gem 'activeadmin'
 gem 'country-select'
-gem 'tinymce-rails'
+
 
 
 gem 'geocoder'

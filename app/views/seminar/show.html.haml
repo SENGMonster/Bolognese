@@ -4,7 +4,7 @@
     %li
       %a{:href=>"##{i.menu_title}"}
         =i.menu_title
-%p=@seminar.description
+%p=@seminar.description.html_safe
 
 %h2="Termine"
 - @seminar.termines.each do |t|
@@ -13,5 +13,5 @@
 - @seminar.infoitems.each do |i|
   %h3= i. title
   %p
-    =i.short_description
+    =i.short_description.html_safe
     =link_to 'mehr..', '#' 

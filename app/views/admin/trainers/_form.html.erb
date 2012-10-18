@@ -7,7 +7,7 @@
       f.inputs do
         f.input :name
         f.input :subtitle
-        f.input :description
+        f.input :description, :input_html => { :class => 'mceEditor', :size => "80x15" }
         f.input :contact_data
         f.input :contact_email
         f.input :profile_picture, as: :file

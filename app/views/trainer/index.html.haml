@@ -1,2 +1,11 @@
-%h1 Trainer#index
-%p Find me in app/views/trainer/index.html.haml
+%h1
+  NLP Lifetuning Trainer
+
+%ul
+- @trainers.each do |t|
+  %li
+    .trainer_preview
+      %a{href: trainer_show_path(id: t.id)}
+        %img{src: "#{t.profile_picture.url}"}
+        = t.name
+        = t.subtitle

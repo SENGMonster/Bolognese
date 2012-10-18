@@ -1,2 +1,11 @@
-%h1 Seminar#index
-%p Find me in app/views/seminar/index.html.haml
+%h1 NLP Lifetuning Seminare
+
+- @categories.each do |c|
+  .seminar_preview
+    %h2 
+      =c.name
+    %ul
+      -c.seminars.each do |s|
+        %li
+          =link_to s.title, seminar_show_path(id: s.id)
+

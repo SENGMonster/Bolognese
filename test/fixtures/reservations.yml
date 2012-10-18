@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  day_of_payment: 2012-10-18
+  comment: MyText
+  termin_id: 1
+  attendee_id: 1
+  paymentmode_id: MyString
+
+two:
+  day_of_payment: 2012-10-18
+  comment: MyText
+  termin_id: 1
+  attendee_id: 1
+  paymentmode_id: MyString

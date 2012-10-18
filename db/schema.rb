@@ -70,6 +70,19 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "attendees", :force => true do |t|
+    t.string   "lastname"
+    t.string   "firstname"
+    t.date     "birthday"
+    t.string   "streetnr"
+    t.string   "city"
+    t.string   "plz"
+    t.string   "email"
+    t.string   "tel"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -84,6 +97,12 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "menu_title"
+  end
+
+  create_table "paymentmodes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "pics", :force => true do |t|
@@ -115,6 +134,16 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "seminar_id"
+  end
+
+  create_table "reservations", :force => true do |t|
+    t.date     "day_of_payment"
+    t.text     "comment"
+    t.integer  "termin_id"
+    t.integer  "attendee_id"
+    t.string   "paymentmode_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "seminars", :force => true do |t|

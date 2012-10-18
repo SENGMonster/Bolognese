@@ -1,17 +1,47 @@
+-content_for :head do 
+  :javascript
+     $(document).ready(function () {
+      $(".customLink").click(function(){
+        var rel = $(this).attr("rel");
+        var m = ((rel -1) * 750);
+        $('.carousel').animate({marginLeft: -m}, 1000);
+        });
+    });
+
+.sidebar
+  %h2="Termine"
+  -@seminar.termines.each do |t|
+    %p="#{t.start_date} - #{t.end_date} in #{t.address.city}"
+    = link_to "jetzt anmelden", booking_book_path(termin_id: t.id)
+
 %h1=@seminar.title
-%ul
+%ul.seminar_menu
+  %li
+    %a{class: "customLink", rel: "1"}="Übersicht"
+  - counter=1
   - @seminar.infoitems.each do |i|
+    -counter+=1
     %li
-      %a{:href=>"##{i.menu_title}"}
+      %a{class: "customLink", rel: "#{counter}"}
         =i.menu_title
-%p=@seminar.description.html_safe
+.clear
 
-%h2="Termine"
-- @seminar.termines.each do |t|
-  %p="#{t.start_date} - #{t.end_date} in #{t.address.city}"
+.carousel
+  %ul
+    %li
+      %div
+        %p=@seminar.description.html_safe
 
-- @seminar.infoitems.each do |i|
-  %h3= i. title
-  %p
-    =i.short_description.html_safe
-    =link_to 'mehr..', '#' 
+        -counter = 1
+        - @seminar.infoitems.each do |i|
+          -counter+=1
+          %h3= i.title
+          %p
+            =i.short_description.html_safe
+            %a{class: "customLink", rel: "#{counter}"}="mehr davon!"
+      - @seminar.infoitems.each do |i|
+        %li
+          %div
+            %a{id: "#{i.menu_title}"}
+            %h3= i.title
+            =i.description.html_safe

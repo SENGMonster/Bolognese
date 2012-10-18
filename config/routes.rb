@@ -1,5 +1,15 @@
 Lifetuning::Application.routes.draw do
 
+  resources :attendees
+
+  resources :paymentmodes
+
+  resources :reservations
+
+  get "booking/book"
+  get "booking/succesfull_booking"
+  post "booking/do_booking"
+
   get "trainer/index"
 
   get "trainer/show"

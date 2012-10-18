@@ -3,7 +3,11 @@ class SeminarController < ApplicationController
   end
 
   def show
-    @seminar=Seminar.find(params[:id])
+    begin
+      @seminar=Seminar.find(params[:id])
+    rescue
+      redirect_to seminar_index_path 
+    end
   end
 
   def detail

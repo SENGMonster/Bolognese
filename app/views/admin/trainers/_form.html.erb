@@ -1,0 +1,19 @@
+ 
+ <%= semantic_form_for [:admin, @trainer], :builder => ActiveAdmin::FormBuilder do |f|
+
+    puts f.object.errors.inspect     
+
+
+      f.inputs do
+        f.input :name
+        f.input :subtitle
+        f.input :description
+        f.input :contact_data
+        f.input :contact_email
+        f.input :profile_picture, as: :file
+        # f.input :crleated_at, :label => "Cr-eate User At", :as => :datepicker,:input_html => { :style  => "width:100px;"}
+      end
+      
+      f.buttons
+    end 
+      %>

@@ -1,5 +1,9 @@
 Lifetuning::Application.routes.draw do
 
+  get "trainer/index"
+
+  get "trainer/show"
+
   get "seminar/index"
 
   get "seminar/show"

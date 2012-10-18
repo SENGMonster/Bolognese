@@ -1,4 +1,9 @@
 %h1=@seminar.title
+%ul
+  - @seminar.infoitems.each do |i|
+    %li
+      %a{:href=>"##{i.menu_title}"}
+        =i.menu_title
 %p=@seminar.description
 
 %h2="Termine"

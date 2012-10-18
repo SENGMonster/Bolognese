@@ -1,0 +1,14 @@
+%ul
+  - Trainer.all.each do |t|
+    %a{href: "##{t.name}"}=t.name
+
+%h1=@trainer.name
+.trainer_profile_pic
+  %img{src: @trainer.profile_picture.url}
+
+  .contact_data
+    =@trainer.contact_data
+    =@trainer.contact_email
+
+.trainer_description
+  =@trainer.description

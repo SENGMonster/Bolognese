@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010121654) do
+ActiveRecord::Schema.define(:version => 2012101808991239) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20121010121654) do
     t.integer  "seminar_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "menu_title"
   end
 
   create_table "pics", :force => true do |t|
@@ -134,6 +135,20 @@ ActiveRecord::Schema.define(:version => 20121010121654) do
     t.integer  "seminar_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "trainers", :force => true do |t|
+    t.text     "description"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.string   "profile_picture_file_name"
+    t.string   "profile_picture_content_type"
+    t.integer  "profile_picture_file_size"
+    t.datetime "profile_picture_updated_at"
+    t.string   "name"
+    t.string   "subtitle"
+    t.string   "contact_data"
+    t.string   "contact_email"
   end
 
 end

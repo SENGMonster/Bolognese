@@ -1,9 +1,11 @@
 .carousel
 
 .carousel_item
-  width: 810px
-  margin: 20px
-  display: none
+  width: 0px
+  padding: 0px
+  overflow: hidden
+  float: left
+  background: $background-brown
 
 .customLink
   cursor: hand
@@ -39,5 +41,18 @@
   list-style: none
   width: 800px
   li
-    width: 100px
+    width: 300px
     float: left
+    padding: 15px
+    margin: 10px
+    border: 1px solid $dark
+
+#filter
+  margin: 20px 0px
+
+  label
+    background-color: $dark
+    color: $white
+    display: block
+    float: left
+    padding: 3px

@@ -3,13 +3,18 @@
     $(document).ready(function () {
 
       var old=0;
-      $("#destination .carousel_item:eq(0)").show();
+      $("#destination .carousel_item:eq(0)").css('width','810px');
+      $("#destination .carousel_item:eq(0)").css('padding','20px');
       $(".customLink").click(function(){
         var rel = $(this).attr("rel");
         var inputstringrel="#destination .carousel_item:eq(" + rel +")";
         var inputstringold="#destination .carousel_item:eq(" + old +")";
-        $(inputstringold).hide();
-        $(inputstringrel).show();
+        //$(inputstringold).hide();
+        //$(inputstringrel).show('fast');
+        $(inputstringold).css('padding','0px');
+        $(inputstringrel).css('padding','20px');
+        $(inputstringold).animate({'width':'0px'});
+        $(inputstringrel).animate({'width':'810px'});
         old=rel;
       });
 

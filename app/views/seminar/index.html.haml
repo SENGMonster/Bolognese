@@ -25,22 +25,13 @@
     // DOMContentLoaded
     $(function() {
 
-      // bind radiobuttons in the form
-      var $filterType = $('#filter input[name="type"]');
-      var $filterSort = $('#filter input[name="sort"]');
+      $category="all";
 
-      // get the first collection
-      var $applications = $('#applications');
-
-      // clone applications to get a second collection
-      var $data = $applications.clone();
-
-      // attempt to call Quicksand on every form change
-      $filterType.add($filterSort).change(function(e) {
-        if ($('#filter input[name="type"]:checked').val() == 'all') {
+      function do_changing(){
+       if ($category == 'all') {
           var $filteredData = $data.find('li');
         } else {
-          var $filteredData = $data.find('li[data-type=' + $('#filter input[name="type"]:checked').val() + ']');
+          var $filteredData = $data.find('li[data-type=' + $category + ']');
         }
 
         // if sorted by size
@@ -64,46 +55,76 @@
           duration: 800,
           easing: 'easeInOutQuad'
         });
+      }
 
+      // bind radiobuttons in the form
+      var $filterType = $('#filter input[name="type"]');
+      var $filterSort = $('#filter input[name="sort"]');
+
+      $(".seminarSwitcher").click(function(){
+        var rel = $(this).attr("rel");
+        $category=rel;
+        //var selectorstring='#filter input[value='+rel+']';
+        //$formitem=$(selectorstring);
+        //$('#filter input[name="type"]:checked').removeAttr("checked");
+        //$formitem.prop("checked", "checked");
+        do_changing();
       });
+
+      // get the first collection
+      var $applications = $('#applications');
+
+      // clone applications to get a second collection
+      var $data = $applications.clone();
+
+      // attempt to call Quicksand on every form change
+      $filterType.add($filterSort).change(function(e) {
+        do_changing();
+      });
+
+
 
     });
 %h1 NLP Lifetuning Seminare
 
-- @categories.each do |c|
-  .seminar_preview
-    %h2 
-      =c.name
-    %ul
-      -c.seminars.each do |s|
-        %li
-          =link_to s.title, seminar_show_path(id: s.id)
+/ - @categories.each do |c|
+/   .seminar_preview
+/     %h2 
+/       =c.name
+/     %ul
+/       -c.seminars.each do |s|
+/         %li
+/           =link_to s.title, seminar_show_path(id: s.id)
 
 
-
+= link_to "Alle", "#", rel: 'all', class: "seminarSwitcher"
+- counter = 1
+-Category.all.each do |c|    
+  = link_to c.name, "#", rel: c.name, class: "seminarSwitcher"
+  -counter+=1
 
 %form#filter
-  %fieldset
-    %legend="Sortieren nach Typ"
-    %label
-      %input{type: "radio", name: "type" ,value: "all" , checked: "checked"}="Everything"
-    %label
-      %input{type: "radio", name: "type" ,value: "app"}="App"
-    %label
-      %input{type: "radio", name: "type" ,value: "util"}="Util"
-
+  / %fieldset
+  /   %label
+  /     %input{type: "radio", name: "type" ,value: "all" , checked: "checked"}="Alle"
+  /   -Category.all.each do |c|    
+  /     %label
+  /       %input{type: "radio", name: "type" ,value: "#{c.name}"}=c.name
+  /   .clear
   %fieldset
     %legend="Sortieren nach "
     %label
-      %input{type: "radio", name: "sort" ,value: "size", checked: "checked"}="Size"
+      %input{type: "radio", name: "sort" ,value: "size", checked: "checked"}="Preis"
     %label
       %input{type: "radio" ,name: "sort" ,value: "name" }="Name"
 
 %ul#applications.image_grid
-  - types = ["app", "util"]
-  - 25.times do |i|
-    %li{:"data-id" => "id-#{i}", :"data-type" => types.shuffle.first}
-      =image_tag ('plus_man.png')
-      %strong="Item #{i}"
-      %span{:"data-type"=>"size"}="#{i*10} KB"
+  - Seminar.all.each do |s|
+    %li{:"data-id" => "id-#{s.id}", :"data-type" => s.category.name}
+      %strong
+        =link_to s.title, seminar_show_path(id: s.id)
+      %br
+      %br
+      %span{:"data-type"=>"size"}
+        =s.prices.first.price
     

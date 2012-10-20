@@ -4,6 +4,8 @@ $background-brown: #F2EEDB
 $green: #c7dc53
 $dark: #2d2d2d
 $white: #f9f9f9
+$gray: #c7c1a4
+$sidebar-gray: #dfd8b8
 
 .clear
   clear: both
@@ -21,6 +23,7 @@ h1
 h2
   @extend .heading
   font-size: 16pt
+  margin-bottom: 10px
 h3
   @extend .heading
   font-size: 13pt
@@ -30,9 +33,56 @@ a
   color: $dark
   font-size: 13pt
 
+b,strong
+  color: $green
+  font-weight: bold
+
+p
+  margin-bottom: 5px
+
 #wrapper
   +grid-container
 
 .content
 
 
+.button-dark
+  background: $dark
+  color: $background-brown
+  padding: 5px
+  margin: 5px
+  display: inline-block
+  text-align: center
+  font-size: 10pt
+
+.button-green
+  @extend .button-dark
+  background: $sidebar-gray
+  color: $dark
+
+
+
+.border
+  background:  $gray
+  height: 1px
+  width: 100%
+  margin: 30px 0px
+
+.border-bottom
+  padding-bottom: 10px
+  margin-bottom: 10px
+  border-bottom: 1px solid $gray
+
+.sidebar
+  +column(2)
+  h3
+    @extend .border-bottom
+
+.sidebar-inner
+  background: $sidebar-gray
+  margin: 20px 0px
+  padding: 20px
+
+
+.big-content  
+  +last-column(6)

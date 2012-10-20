@@ -1,47 +1,68 @@
 -content_for :head do 
   :javascript
-     $(document).ready(function () {
+    $(document).ready(function () {
+
+      var old=0;
+      $("#destination .carousel_item:eq(0)").show();
       $(".customLink").click(function(){
         var rel = $(this).attr("rel");
-        var m = ((rel -1) * 750);
-        $('.carousel').animate({marginLeft: -m}, 1000);
-        });
+        var inputstringrel="#destination .carousel_item:eq(" + rel +")";
+        var inputstringold="#destination .carousel_item:eq(" + old +")";
+        $(inputstringold).hide();
+        $(inputstringrel).show();
+        old=rel;
+      });
+
     });
 
-.sidebar
-  %h2="Termine"
-  -@seminar.termines.each do |t|
-    %p="#{t.start_date} - #{t.end_date} in #{t.address.city}"
-    = link_to "jetzt anmelden", booking_book_path(termin_id: t.id)
-
 %h1=@seminar.title
-%ul.seminar_menu
+%ul#source.seminar_menu
   %li
-    %a{class: "customLink", rel: "1"}="Übersicht"
+    %a{class: "customLink", rel: "0"}="Übersicht"
   - counter=1
   - @seminar.infoitems.each do |i|
-    -counter+=1
     %li
       %a{class: "customLink", rel: "#{counter}"}
         =i.menu_title
+    -counter+=1
 .clear
 
-.carousel
-  %ul
-    %li
-      %div
-        %p=@seminar.description.html_safe
+.sidebar
+  .sidebar-inner
+    %h3="Termine"
+    -@seminar.termines.each do |t|
+      .termin
+        .icon
+          =image_tag ('plus_man.png')
+        .date
+          %p="#{I18n.l(t.start_date, format: :short)} - #{I18n.l t.end_date, format: :short}"
+          %p=@seminar.title
+        /   %p=t.address.city
+        .clear
+        .buy-termin
+          = link_to "jetzt anmelden", booking_book_path(termin_id: t.id), class: "button-dark"
+        .clear
 
-        -counter = 1
-        - @seminar.infoitems.each do |i|
-          -counter+=1
-          %h3= i.title
-          %p
-            =i.short_description.html_safe
-            %a{class: "customLink", rel: "#{counter}"}="mehr davon!"
+
+.big-content
+  .carousel
+    #destination
+      .carousel_item
+        .seminar_info
+          %h2=@seminar.subtitle
+          %p=@seminar.description.html_safe
+
+          -counter = 1
+          - @seminar.infoitems.each do |i|
+            .border
+            .info_item
+              %h2= i.title
+              %p
+                =i.short_description.html_safe
+                %a{class: "customLink button-green", rel: "#{counter}"}="mehr davon!"
+                -counter+=1
       - @seminar.infoitems.each do |i|
-        %li
-          %div
-            %a{id: "#{i.menu_title}"}
-            %h3= i.title
-            =i.description.html_safe
+        .carousel_item
+          %a{id: "#{i.menu_title}"}
+          %h3= i.title
+          =i.description.html_safe

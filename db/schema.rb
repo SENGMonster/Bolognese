@@ -94,9 +94,13 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
     t.string   "short_description"
     t.text     "description"
     t.integer  "seminar_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "menu_title"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "paymentmodes", :force => true do |t|
@@ -150,10 +154,14 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
     t.string   "title"
     t.text     "description"
     t.string   "abschluss"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.integer  "category_id"
     t.string   "subtitle"
+    t.string   "indexpic_file_name"
+    t.string   "indexpic_content_type"
+    t.integer  "indexpic_file_size"
+    t.datetime "indexpic_updated_at"
   end
 
   create_table "termines", :force => true do |t|

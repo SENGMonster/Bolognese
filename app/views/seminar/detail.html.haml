@@ -1,2 +1,10 @@
-%h1 Seminar#detail
-%p Find me in app/views/seminar/detail.html.haml
+-i = @infoitem
+%h1=i.seminar.title
+.carousel_item
+  %a{id: "#{i.menu_title}"}
+  %h3= i.title
+  .info_item_pic
+    %img{src: i.avatar.url}
+    "Hallo"
+  .info_text
+    =i.description.html_safe

@@ -1,36 +1,4 @@
--content_for :head do 
-  :javascript
-    $(document).ready(function () {
-
-      var old=0;
-      $("#destination .carousel_item:eq(0)").css('width','810px');
-      $("#destination .carousel_item:eq(0)").css('padding','20px');
-      $(".customLink").click(function(){
-        var rel = $(this).attr("rel");
-        var inputstringrel="#destination .carousel_item:eq(" + rel +")";
-        var inputstringold="#destination .carousel_item:eq(" + old +")";
-        //$(inputstringold).hide();
-        //$(inputstringrel).show('fast');
-        $(inputstringold).css('padding','0px');
-        $(inputstringrel).css('padding','20px');
-        $(inputstringold).animate({'width':'0px'});
-        $(inputstringrel).animate({'width':'810px'});
-        old=rel;
-      });
-
-    });
-
-%h1=@seminar.title
-%ul#source.seminar_menu
-  %li
-    %a{class: "customLink", rel: "0"}="Übersicht"
-  - counter=1
-  - @seminar.infoitems.each do |i|
-    %li
-      %a{class: "customLink", rel: "#{counter}"}
-        =i.menu_title
-    -counter+=1
-.clear
+= render 'header'
 
 .sidebar
   .sidebar-inner
@@ -38,11 +6,14 @@
     -@seminar.termines.each do |t|
       .termin
         .icon
-          =image_tag ('plus_man.png')
+          =I18n.l t.start_date, format: :month
+          %br
+          =t.start_date.year
         .date
-          %p="#{I18n.l(t.start_date, format: :short)} - #{I18n.l t.end_date, format: :short}"
-          %p=@seminar.title
-        /   %p=t.address.city
+          %p
+            ="#{I18n.l(t.start_date, format: :short)} - #{I18n.l t.end_date, format: :short}"
+            %br
+            =@seminar.title
         .clear
         .buy-termin
           = link_to "jetzt anmelden", booking_book_path(termin_id: t.id), class: "button-dark"
@@ -50,24 +21,18 @@
 
 
 .big-content
-  .carousel
-    #destination
-      .carousel_item
-        .seminar_info
-          %h2=@seminar.subtitle
-          %p=@seminar.description.html_safe
+  .seminar_info
+    %h2=@seminar.subtitle
+    %p=@seminar.description.html_safe
 
-          -counter = 1
-          - @seminar.infoitems.each do |i|
-            .border
-            .info_item
-              %h2= i.title
-              %p
-                =i.short_description.html_safe
-                %a{class: "customLink button-green", rel: "#{counter}"}="mehr davon!"
-                -counter+=1
-      - @seminar.infoitems.each do |i|
-        .carousel_item
-          %a{id: "#{i.menu_title}"}
-          %h3= i.title
-          =i.description.html_safe
+    - @seminar.infoitems.each do |i|
+      .border
+      .info_item
+        %h2= i.title
+        %img{src: i.avatar.url, class: cycle('right_pic', 'left_pic')}
+        %p
+          =i.short_description.html_safe
+          %br
+          %br
+          %a{class: "customLink button-green", href: seminar_detail_path(id: i.id)}="mehr davon!"
+        .clear

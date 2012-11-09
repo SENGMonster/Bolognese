@@ -1,0 +1,9 @@
+%h1.title=@seminar.title
+.seminar_index_pic{style: "background: transparent url('#{@seminar.indexpic.url}') center center"}
+%ul#source.seminar_menu
+  %li
+    %a{class: "customLink", href: seminar_show_path(id: @seminar.id)}="Übersicht"
+  - @seminar.infoitems.each do |i|
+    %li
+      %a{class: "customLink", href: seminar_detail_path(id: i.id)}
+        =i.menu_title

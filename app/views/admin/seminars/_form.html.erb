@@ -11,7 +11,7 @@
         f.input :subtitle
         f.input :abschluss 
         f.input :description, :input_html => { :class => 'mceEditor', :size => "80x30"}
-        # f.input :crleated_at, :label => "Cr-eate User At", :as => :datepicker,:input_html => { :style  => "width:100px;"}
+        f.input :indexpic, as: :file      
       end
 
       f.has_many :infoitems do |item|
@@ -19,6 +19,7 @@
         item.input :menu_title
         item.input :short_description, :input_html => { :class => 'mceEditor', :size => "80x15" }
         item.input :description,  :input_html => { :class => 'mceEditor', :size => "80x15" }
+        item.input :avatar, as: :file
       end
 
       f.has_many :termines do |item|
@@ -37,6 +38,7 @@
         item.input :name
         item.input :item, as: :file
       end
+
 
       
       f.buttons

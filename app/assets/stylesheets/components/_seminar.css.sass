@@ -1,23 +1,28 @@
-.carousel
-
-.carousel_item
-  width: 0px
-  padding: 0px
-  overflow: hidden
-  float: left
-  background: $background-brown
 
 .customLink
   cursor: hand
   cursor: pointer
 
+.seminar_index_pic 
+  +column(6) 
+  height: 250px
+
+.title
+  margin-top: 10px
+  margin-bottom: 25px
 .seminar_menu
+  +last-column(2)
   li
-    float: left
-    margin-right: 20px
+    border-bottom: 1px solid $dark
+    padding: 10px  0px
+    &:first-child
+      padding-top: 0px
+    &:last-child
+      border-bottom: none
+      padding-bottom: 0px
 
 .seminar_info
-  margin-bottom: 30px
+  margin: 30px 0px
   img
     margin: 5px
 
@@ -25,14 +30,26 @@
   h2
     margin-bottom: 10px
     font-size: 13pt
+  p
+    float: left
+    margin: 20px 0px
+  img
+    height: 150px
+    margin: 20px
+  .right_pic 
+    float: right
+  .left_pic
+    float: left
 
 .termin
   margin-bottom: 30px
   .icon
     float: left
+    font-size: 13pt
+    font-weight: bold
   .date
     float: right
-    margin-right: 10px
+    margin: 0px 5px
   .buy-termin
     float: right
 
@@ -56,3 +73,4 @@
     display: block
     float: left
     padding: 3px
+

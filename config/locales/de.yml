@@ -33,7 +33,7 @@ de:
     formats:
       default: ! '%d.%m.%Y'
       long: ! '%d. %B %Y'
-      short: ! '%d. %m %y'
+      short: ! '%d.%m.%y'
       month: ! '%b'
     month_names:
     - 

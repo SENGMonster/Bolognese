@@ -1,7 +1,42 @@
-= render 'header'
+%h1.title=@seminar.title
+.seminar_index_pic{style: "background: transparent url('#{@seminar.indexpic.url}') center center"}
 
-.sidebar
-  .sidebar-inner
+.info_text
+  %h2=@seminar.subtitle
+  %p=@seminar.description.html_safe
+.location
+  %h3="Seminarort"
+  %img{src: "http://maps.googleapis.com/maps/api/staticmap?center='#{@seminar.termines.first.address.fulltext}'&zoom=8&size=250x200&markers='#{@seminar.termines.first.address.fulltext}'&sensor=false"}
+  .text
+    %p
+      %strong
+        =@seminar.termines.first.address.name
+      %br
+      =@seminar.termines.first.address.street_nr
+      %br
+      ="#{@seminar.termines.first.address.plz} #{@seminar.termines.first.address.city}"
+
+.clear
+
+%h2="WAS DICH ERTWARTET"
+- @seminar.infoitems.each do |i|
+  %div{class: cycle('left', 'right')}
+    .info_item
+      %img{src: i.avatar.url}
+      .text
+        %h3=i.title        
+        %p
+          =i.short_description.html_safe
+          %br
+          %br
+          %a{class: "customLink button-green", href: seminar_detail_path(id: i.id)}="mehr davon!"
+      .clear
+
+.clear
+
+%h2="ORGANISATION"
+.left
+  .info_item
     %h3="Termine"
     -@seminar.termines.each do |t|
       .termin
@@ -14,25 +49,11 @@
             ="#{I18n.l(t.start_date, format: :short)} - #{I18n.l t.end_date, format: :short}"
             %br
             =@seminar.title
+            %br
         .clear
-        .buy-termin
+        .buy_termin
           = link_to "jetzt anmelden", booking_book_path(termin_id: t.id), class: "button-dark"
-        .clear
 
-
-.big-content
-  .seminar_info
-    %h2=@seminar.subtitle
-    %p=@seminar.description.html_safe
-
-    - @seminar.infoitems.each do |i|
-      .border
-      .info_item
-        %h2= i.title
-        %img{src: i.avatar.url, class: cycle('right_pic', 'left_pic')}
-        %p
-          =i.short_description.html_safe
-          %br
-          %br
-          %a{class: "customLink button-green", href: seminar_detail_path(id: i.id)}="mehr davon!"
-        .clear
+.right
+  .info_item
+ 

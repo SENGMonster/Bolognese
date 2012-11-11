@@ -87,21 +87,17 @@
     });
 %h1 NLP Lifetuning Seminare
 
-/ - @categories.each do |c|
-/   .seminar_preview
-/     %h2 
-/       =c.name
-/     %ul
-/       -c.seminars.each do |s|
-/         %li
-/           =link_to s.title, seminar_show_path(id: s.id)
+%p.intro_text
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit 
+  amet voluptua.
 
-
-= link_to "Alle", "#", rel: 'all', class: "seminarSwitcher"
-- counter = 1
--Category.all.each do |c|    
-  = link_to c.name, "#", rel: c.name, class: "seminarSwitcher"
-  -counter+=1
+/ .seminar_index_menu
+/   = link_to "Alle", "#", rel: 'all', class: "seminarSwitcher"
+/   - counter = 1
+/   -Category.all.each do |c|    
+/     = link_to c.name, "#", rel: c.name, class: "seminarSwitcher"
+/     -counter+=1
+/ .clear
 
 %form#filter
   / %fieldset
@@ -111,20 +107,36 @@
   /     %label
   /       %input{type: "radio", name: "type" ,value: "#{c.name}"}=c.name
   /   .clear
-  %fieldset
-    %legend="Sortieren nach "
-    %label
-      %input{type: "radio", name: "sort" ,value: "size", checked: "checked"}="Preis"
-    %label
-      %input{type: "radio" ,name: "sort" ,value: "name" }="Name"
-
-%ul#applications.image_grid
-  - Seminar.all.each do |s|
-    %li{:"data-id" => "id-#{s.id}", :"data-type" => s.category.name}
-      %strong
-        =link_to s.title, seminar_show_path(id: s.id)
-      %br
-      %br
-      %span{:"data-type"=>"size"}
-        =s.prices.first.price
-    
+  / %fieldset
+  /   %legend="Sortieren nach "
+  /   %label
+  /     %input{type: "radio", name: "sort" ,value: "size", checked: "checked"}="Preis"
+  /   %label
+  /     %input{type: "radio" ,name: "sort" ,value: "name" }="Name"
+.seminar_previews
+  - Category.all.each do |c|
+    %h2=c.name
+    %ul#applications.image_grid
+      - c.seminars.each do |s|
+        %li{:"data-id" => "id-#{s.id}", :"data-type" => s.category.name}
+          .seminar_preview_item
+            %img{src: s.indexpic.url}
+            .text
+              %p
+                %strong
+                  =link_to s.title, seminar_show_path(id: s.id)
+              %p=s.subtitle
+          
+            .fun_facts
+              %ul            
+                -if s.termines.first
+                  %li
+                    = (s.termines.first.end_date - s.termines.first.start_date).to_i.to_s + " Tage"
+                  %li
+                    = s.termines.first.address.city
+                - if s.prices.first
+                  %li
+                    %span{:"data-type"=>"size"}
+                      =s.prices.first.price.to_s + " €"
+        
+    .clear

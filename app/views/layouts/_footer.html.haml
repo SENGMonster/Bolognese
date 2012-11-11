@@ -11,6 +11,33 @@
 .contact_footer
   %h3
     Kontakt
+  %ul.footer_contact_menu
+    %li
+      =link_to "Über NLP Lifetuning", home_about_path
+    %li
+      =link_to "Trainer", trainer_index_path
+    %li
+      =link_to "Kontaktformular", home_contact_path
+    %li
+      =link_to "Impressum", home_impressum_path
 .stefan_footer
-  %h3
-    Anfragen    
+  =image_tag('stefans_trainer_bild.jpg')
+  %table
+    %tr
+      %td
+        Tel
+      %td
+        01258345
+    %tr
+      %td
+        Skype
+      %td
+        Hypnovision
+    %tr
+      %td
+        Mail
+      %td
+        info@hypnovision.de
+    %tr
+      %td
+      %td

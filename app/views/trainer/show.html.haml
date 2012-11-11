@@ -1,14 +1,21 @@
-%ul
-  - Trainer.all.each do |t|
-    %a{href: "##{t.name}"}=t.name
-
-%h1=@trainer.name
-.trainer_profile_pic
-  %img{src: @trainer.profile_picture.url}
+.sidebar
+  .trainer_profile_pic
+    %img{src: @trainer.profile_picture.url}
 
   .contact_data
     =@trainer.contact_data
+    %br
     =@trainer.contact_email
 
-.trainer_description
-  =@trainer.description.html_safe
+  .trainer_sub_menu
+    %p="Alle NLP Lifetuning Trainer"
+    - Trainer.all.each do |t|
+      .trainer_sub_menu_item
+        %a{href: trainer_show_path(id: t.id)}=t.name
+
+.big_content
+  %h1=@trainer.name
+  .trainer_description
+    =@trainer.description.html_safe
+
+.clear

@@ -52,6 +52,13 @@ p
 img
   border: 1px solid $dark
 
+
+.left
+  +column(4)
+.right
+  +last-column(4)
+
+
 #wrapper
   +grid-container
 
@@ -85,19 +92,10 @@ img
   border-bottom: 1px solid $gray
 
 .sidebar
-  +column(2)
-  h3
-    margin-top: 75px
-    font-weight: bold
-    font-size: 14pt
-    margin-bottom: 10px
-    padding-bottom: 10px
-    &:first-child
-      margin-top: 0px
-
-.sidebar-inner
-  margin: 30px 0px  
-
+  +column(3)
 
 .big-content  
-  +last-column(6)
+  +last-column(5)
+
+.intro_text
+  margin: 30px

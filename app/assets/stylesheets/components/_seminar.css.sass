@@ -4,12 +4,28 @@
   cursor: pointer
 
 .seminar_index_pic 
-  +row
   height: 250px
+
+.top_picture
+  margin-bottom: 30px
 
 .title
   margin-top: 10px
   margin-bottom: 25px
+
+.subtitle
+  position: relative
+  p
+    position: absolute
+    top: 165px
+    right: 0px
+    background: $white
+    color: $dark
+    font-weight: bold
+    font-size: 18pt
+    padding: 10px
+    text-align: right
+    
 .seminar_menu
   +last-column(2)
   li
@@ -22,9 +38,14 @@
       padding-bottom: 0px
 
 .info_text
-  +column(5)
+  +column(6)
+
 .location
-  +last-column(3)
+  +last-column(2)
+  img
+    float: right
+  p
+    text-align: right
 
 .left
   +column(4)
@@ -47,13 +68,25 @@
     
   img
     height: 150px
+    width: 200px
     margin: 0px 20px
     margin-left: 0px  
     float: left
 
+.price_table
+  td
+    height: 35px
+  .priceclass
+    width: 250px
+    font-weight: bold
+  .price
+    text-align: right
+
 
 .termin
+  float: left
   margin-bottom: 30px
+  width: 285px  
   .icon
     float: left
     font-size: 13pt
@@ -62,9 +95,16 @@
   .date
     float: left
     width: 150px
-  .buy-termin
-    float: right
-
+  .buy_termin
+    background: transparent url(image_path('darkZeigerbtn.png')) no-repeat
+    margin-left: 160px
+    height: 27px
+    padding-top: 15px
+    a
+      color: $white
+      text-align: center
+      font-size: 11pt
+      padding-left: 10px
 
 .image_grid
   list-style: none

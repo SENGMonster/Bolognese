@@ -1,22 +1,23 @@
 %h1.title=@seminar.title
-.seminar_index_pic{style: "background: transparent url('#{@seminar.indexpic.url}') center center"}
+
+.top_picture
+  .subtitle
+    %p=@seminar.subtitle
+  .seminar_index_pic{style: "background: transparent url('#{@seminar.indexpic.url}') center center"}
 
 .info_text
-  %h2=@seminar.subtitle
   %p=@seminar.description.html_safe
 .location
-  %h3="Seminarort"
   %img{src: "http://maps.googleapis.com/maps/api/staticmap?center='#{@seminar.termines.first.address.fulltext}'&zoom=8&size=250x200&markers='#{@seminar.termines.first.address.fulltext}'&sensor=false"}
-  .text
-    %p
-      %strong
-        =@seminar.termines.first.address.name
-      %br
-      =@seminar.termines.first.address.street_nr
-      %br
-      ="#{@seminar.termines.first.address.plz} #{@seminar.termines.first.address.city}"
+  %p
+    %strong
+      =@seminar.termines.first.address.name
+    %br
+    =@seminar.termines.first.address.street_nr
+    %br
+    ="#{@seminar.termines.first.address.plz} #{@seminar.termines.first.address.city}"
 
-.clear
+.space
 
 %h2="WAS DICH ERTWARTET"
 - @seminar.infoitems.each do |i|
@@ -32,12 +33,12 @@
           %a{class: "customLink button-green", href: seminar_detail_path(id: i.id)}="mehr davon!"
       .clear
 
-.clear
+.space
 
-%h2="ORGANISATION"
+%h2="INVESTITIONEN"
 .left
   .info_item
-    %h3="Termine"
+    =image_tag('Time.jpg')
     -@seminar.termines.each do |t|
       .termin
         .icon
@@ -52,8 +53,15 @@
             %br
         .clear
         .buy_termin
-          = link_to "jetzt anmelden", booking_book_path(termin_id: t.id), class: "button-dark"
+          = link_to "jetzt anmelden", booking_book_path(termin_id: t.id)
 
 .right
   .info_item
+    =image_tag('Money2.jpg')
+    %table.price_table
+      -@seminar.prices.each do |p|
+        %tr
+          %td.priceclass=p.priceclass.name
+          %td.price=p.price.to_s + " €"
+
  

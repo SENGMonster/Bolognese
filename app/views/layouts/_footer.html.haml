@@ -1,9 +1,16 @@
-.first-footer
+.seminar_footer
+  %h3="Seminare"
+  -Category.all.each do |c|
+    .footer_seminar_box
+      .footer_sub_title=c.name
+      %ul
+        -c.seminars.each do |s|
+          %li
+            %a{href: seminar_show_path(id: s.id)}=s.title
+      .clear
+.contact_footer
   %h3
-    Seminare
-.second-footer
+    Kontakt
+.stefan_footer
   %h3
-    Hypnose
-.third-footer
-  %h3
-    Kontakt    
+    Anfragen    

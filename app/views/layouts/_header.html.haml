@@ -2,10 +2,11 @@
   =image_tag "YYLogo.png"
   .menu
     %ul
-      %li
-        %a{href: "#{home_index_path}"}="Home"
-      %li
-        %a{href: "#{home_about_path}"}="Mission"
+      %li.home_menu_item
+        %a{href: "#{home_index_path}"}
+          =image_tag('Home.png')
+      %li.first_menu_item
+        %a{href: "#{home_about_path}"}="Über NLP Lifetuning"
       %li
         %a{href: "#{seminar_index_path}"}="Seminare"
       %li

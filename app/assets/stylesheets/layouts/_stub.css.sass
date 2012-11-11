@@ -1,30 +1,57 @@
 .menu
   +row
-  background-color: $green
-  padding: 10px
-  margin-bottom: 20px
-
+  background-color: $green  
+  margin-bottom: 40px
+  
+  .home_menu_item
+    background: $dark
+    padding: 15px 25px
+  .first_menu_item
+    padding-left: 50px
   li 
     float: left
-    margin: 0px 30px
+    padding: 15px 40px
+    //margin: 0px 30px
+
   a
-    color: $white
-    font-weight: bolder
+    color: $dark
+    font-weight: bold
+    font-size: 11pt
 
 .footer
   +row
   background-color: $green
-  color: $white
-  padding: 15px 0px
+  color: $dark
+  padding: 25px 0px
   margin: 20px 0px
+  font-size: 10pt
 
   h3
-    text-transform: uppercase
-    font-size: 11pt
+    font-size: 12pt
+    margin-bottom: 15px
+    font-weight: bolder
+  a
+    font-size: 10pt
+  ul
+    float: left
+    margin-left: 15px
+    border-left: 1px solid $dark
+  li
+    margin-left: 15px
+    
 
-.first-footer
-  +column(2, $padding: 20px)
-.second-footer
+.footer_sub_title
+  float: left
+  font-weight: bold
+  text-transform: uppercase
+
+.seminar_footer
+  +column(4, $padding: 20px)
+.contact_footer
   +column(2)
-.third-footer
+.stefan_footer
   +last-column(2, $differing-right-padding: 20px)
+
+.footer_seminar_box
+  width: 250px
+  float: left

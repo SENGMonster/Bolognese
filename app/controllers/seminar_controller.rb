@@ -21,4 +21,7 @@ class SeminarController < ApplicationController
 
   def booking
   end
+
+  def prices
+  end
 end

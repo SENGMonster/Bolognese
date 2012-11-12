@@ -21,6 +21,7 @@ Lifetuning::Application.routes.draw do
   get "seminar/detail"
 
   get "seminar/booking"
+  get "seminar/prices"
 
   ActiveAdmin.routes(self)
 

@@ -1,10 +1,22 @@
 -i = @infoitem
-%h1=i.seminar.title
-.carousel_item
-  %a{id: "#{i.menu_title}"}
+.detail_item
+  %h1=i.seminar.title
+
   %h3= i.title
+
   .info_item_pic
     %img{src: i.avatar.url}
-    "Hallo"
-  .info_text
+
+  .info_item_info_text  
     =i.description.html_safe
+
+.detail_items_menu
+  %ul.seminar_menu
+    %li
+      %a{class: "customLink", href: seminar_show_path(id: i.seminar.id)}="Übersicht"
+    - i.seminar.infoitems.each do |i|
+      %li
+        %a{class: "customLink", href: seminar_detail_path(id: i.id)}
+          =i.menu_title
+    %li
+      %a{class: "customLink", href: seminar_prices_path(id: i.seminar.id)}="Termine & Preise"

@@ -3,9 +3,17 @@
     %img{src: @trainer.profile_picture.url}
 
   .contact_data
-    =@trainer.contact_data
-    %br
-    =@trainer.contact_email
+    %table
+      %tr
+        %td
+          =image_tag("Icons/Telefon.png", class: 'icon')
+        %td
+          =@trainer.contact_data
+      %tr
+        %td
+          =image_tag("Icons/Mail.png", class: 'icon')
+        %td  
+          =@trainer.contact_email
 
   .trainer_sub_menu
     %p="Alle NLP Lifetuning Trainer"

@@ -21,21 +21,30 @@
     %li
       =link_to "Impressum", home_impressum_path
 .stefan_footer
-  =image_tag('stefans_trainer_bild.jpg')
+  //=image_tag('stefans_trainer_bild.jpg')
   %table
     %tr
       %td
-        Tel
+        =image_tag("Icons/Standort.png", class: 'icon')
+      %td
+        NLP Lifetuning
+        %br
+        Am Schlautbach 36
+        %br
+        890738 Wetter
+    %tr
+      %td
+        =image_tag("Icons/Telefon.png", class: 'icon')
       %td
         01258345
     %tr
       %td
-        Skype
+        =image_tag("Icons/Skype.png", class: 'icon')
       %td
         Hypnovision
     %tr
       %td
-        Mail
+        =image_tag("Icons/Mail.png", class: 'icon')
       %td
         info@hypnovision.de
     %tr

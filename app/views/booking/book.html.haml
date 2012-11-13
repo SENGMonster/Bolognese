@@ -1,5 +1,5 @@
-%h1="Buchung"
 .booking
+  %h1="Buchung"
   .attendee_formular
     %h2="Persönliche Daten"
     -@attendee=Attendee.new
@@ -38,7 +38,7 @@
           %td= f.phone_field :tel
 
         %tr
-          %td="Kommentar (optional)"
+          %td{style: "vertical-align: top"}="Kommentar (optional)"
           %td
             -@reservation=Reservation.new
             =fields_for @reservation do |fr| 
@@ -48,10 +48,12 @@
                   %ul
                     - @reservation.errors.full_messages.each do |msg|
                       %li= msg
-              =fr.text_area :comment
+              = fr.text_area :comment, rows: 5
               = fr.hidden_field :termin_id, value: @termin.id
+
+      =check_box_tag :checked , "Hiermit bestätige ich dass ich die Seminarbedingungen"
       .actions
-        = f.submit 'Save'
+        = f.submit 'Anmelden'
 
 
   .booking_info

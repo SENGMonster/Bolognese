@@ -9,14 +9,7 @@
   %p=@seminar.description.html_safe
 .location
   - if @seminar.termines.first
-    %img{src: "http://maps.googleapis.com/maps/api/staticmap?center='#{@seminar.termines.first.address.fulltext}'&zoom=8&size=250x200&markers='#{@seminar.termines.first.address.fulltext}'&sensor=false"}
-    %p
-      %strong
-        =@seminar.termines.first.address.name
-      %br
-      =@seminar.termines.first.address.street_nr
-      %br
-      ="#{@seminar.termines.first.address.plz} #{@seminar.termines.first.address.city}"
+    = render 'location', termin: @seminar.termines.first
 
 .space
 

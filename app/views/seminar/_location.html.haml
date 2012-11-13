@@ -1,0 +1,8 @@
+%img{src: "http://maps.googleapis.com/maps/api/staticmap?center='#{termin.address.fulltext}'&zoom=8&size=250x200&markers='#{termin.address.fulltext}'&sensor=false"}
+%p
+  %strong
+    =termin.address.name
+  %br
+  =termin.address.street_nr
+  %br
+  ="#{termin.address.plz} #{termin.address.city}"

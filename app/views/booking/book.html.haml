@@ -1,57 +1,80 @@
 %h1="Buchung"
+.booking
+  .attendee_formular
+    %h2="Persönliche Daten"
+    -@attendee=Attendee.new
+    = form_for @attendee, url: booking_do_booking_path do |f|
+      -if @attendee.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@attendee.errors.count, "error")} prohibited this attendee from being saved:"
+          %ul
+            - @attendee.errors.full_messages.each do |msg|
+              %li= msg
 
-=@termin.seminar.title
-=@termin.start_date
-=@termin.end_date
+      %table
+        %tr
+          %td="Nachname"
+          %td= f.text_field :lastname
+        %tr
+          %td="Vorname"
+          %td= f.text_field :firstname
+        %tr
+          %td="Geburtsdatum"
+          %td= f.date_select :birthday
+        %tr
+          %td="Straße und Hausnummer"
+          %td=f.text_field :streetnr
+        %tr
+          %td="Stadt"
+          %td= f.text_field :city
+        %tr
+          %td="PLZ"
+          %td= f.text_field :plz
+        %tr
+          %td="Email"
+          %td= f.email_field :email
+        %tr
+          %td="Telefon"
+          %td= f.phone_field :tel
 
-%h2="Persönliche Daten"
--@attendee=Attendee.new
-= form_for @attendee, url: booking_do_booking_path do |f|
-  -if @attendee.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@attendee.errors.count, "error")} prohibited this attendee from being saved:"
-      %ul
-        - @attendee.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :lastname
-    = f.text_field :lastname
-  .field
-    = f.label :firstname
-    = f.text_field :firstname
-  .field
-    = f.label :birthday
-    = f.date_select :birthday
-  .field
-    = f.label :streetnr
-    = f.text_field :streetnr
-  .field
-    = f.label :city
-    = f.text_field :city
-  .field
-    = f.label :plz
-    = f.text_field :plz
-  .field
-    = f.label :email
-    = f.email_field :email
-  .field
-    = f.label :tel
-    = f.phone_field :tel
-
-  -@reservation=Reservation.new
-  =fields_for @reservation do |fr| 
-    -if @reservation.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@reservation.errors.count, "error")} prohibited this reservation from being saved:"
-        %ul
-          - @reservation.errors.full_messages.each do |msg|
-            %li= msg
-    .field
-      = fr.label :comment
-      = fr.text_area :comment
-      = fr.hidden_field :termin_id, value: @termin.id
-  .actions
-    = f.submit 'Save'
+        %tr
+          %td="Kommentar (optional)"
+          %td
+            -@reservation=Reservation.new
+            =fields_for @reservation do |fr| 
+              -if @reservation.errors.any?
+                #error_explanation
+                  %h2= "#{pluralize(@reservation.errors.count, "error")} prohibited this reservation from being saved:"
+                  %ul
+                    - @reservation.errors.full_messages.each do |msg|
+                      %li= msg
+              =fr.text_area :comment
+              = fr.hidden_field :termin_id, value: @termin.id
+      .actions
+        = f.submit 'Save'
 
 
+  .booking_info
+    %h3=@termin.seminar.title
+    %table
+      %tr
+        %td="Beginn"
+        %td=I18n.l @termin.start_date
+      %tr
+        %td="Ende"
+        %td=I18n.l @termin.end_date
+      %tr
+        %td="Dauer"
+        %td=(@termin.end_date-@termin.start_date).to_i.to_s + " Tage"
+
+    
+    %h3="Kosten"
+    %table
+      -@termin.seminar.prices.each do |p|
+        %tr
+          %td=p.priceclass.name
+          %td=p.price.to_s + " €"
+
+    
+    %h3="Standort"
+    =render 'seminar/location', termin: @termin

@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
     t.string   "paymentmode_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.boolean  "checked"
   end
 
   create_table "seminars", :force => true do |t|

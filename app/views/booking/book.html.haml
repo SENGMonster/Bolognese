@@ -2,7 +2,6 @@
   %h1="Buchung"
   .attendee_formular
     %h2="Persönliche Daten"
-    -@attendee=Attendee.new
     = form_for @attendee, url: booking_do_booking_path do |f|
       -if @attendee.errors.any?
         #error_explanation
@@ -10,7 +9,7 @@
           %ul
             - @attendee.errors.full_messages.each do |msg|
               %li= msg
-
+      
       %table
         %tr
           %td="Nachname"
@@ -37,23 +36,34 @@
           %td="Telefon"
           %td= f.phone_field :tel
 
-        %tr
-          %td{style: "vertical-align: top"}="Kommentar (optional)"
-          %td
-            -@reservation=Reservation.new
-            =fields_for @reservation do |fr| 
-              -if @reservation.errors.any?
-                #error_explanation
-                  %h2= "#{pluralize(@reservation.errors.count, "error")} prohibited this reservation from being saved:"
-                  %ul
-                    - @reservation.errors.full_messages.each do |msg|
-                      %li= msg
+        =fields_for @reservation do |fr| 
+          -if @reservation.errors.any?
+            #error_explanation
+              %h2= "#{pluralize(@reservation.errors.count, "error")} prohibited this reservation from being saved:"
+              %ul
+                - @reservation.errors.full_messages.each do |msg|
+                  %li= msg
+          %tr
+            %td{style: "vertical-align: top"}="Kommentar (optional)"
+            %td
               = fr.text_area :comment, rows: 5
               = fr.hidden_field :termin_id, value: @termin.id
-
-      =check_box_tag :checked , "Hiermit bestätige ich dass ich die Seminarbedingungen"
-      .actions
-        = f.submit 'Anmelden'
+          %tr
+            %td="Preiskategorie"
+            %td
+              -@termin.seminar.prices.each do |p|                                  
+                =fr.radio_button :price_id, p.id
+                ="#{p.priceclass.name} - #{p.price} €"
+                %br
+          %tr
+            %td{colspan: 2}                
+              .space
+                =fr.check_box :checked
+                ="Hiermit bestätige ich dass ich die Seminarbedingungen gelesen und akzeptiert habe und dass ich mich verbindlich anmelde."
+        %tr
+          %td
+            = f.submit 'Anmelden'
+          %td
 
 
   .booking_info

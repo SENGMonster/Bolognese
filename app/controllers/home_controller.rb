@@ -9,6 +9,9 @@ class HomeController < ApplicationController
   def contact
   end
 
+  def success
+  end
+
   def impressum
   end
 end

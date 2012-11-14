@@ -19,6 +19,7 @@ Lifetuning::Application.routes.draw do
   get "seminar/show"
 
   get "seminar/detail"
+  get "home/success"
 
   get "seminar/booking"
   get "seminar/prices"

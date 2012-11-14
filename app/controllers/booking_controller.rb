@@ -16,7 +16,9 @@ class BookingController < ApplicationController
       @termin = Termine.find(@reservation.termin_id)    
 
       @reservation.paymentmode=Paymentmode.first
-      @reservation.attendee=@attendee
+      @reservation.attendee_id=@attendee
+
+      @reservation.valid?
 
       respond_to do |format|
         if @attendee.save && @reservation.save
@@ -25,7 +27,7 @@ class BookingController < ApplicationController
           format.html { render action: "book" }
         end
       end
-    rescue
+    rescue => e      
       redirect_to seminar_index_path
     end
   end

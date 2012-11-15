@@ -7,7 +7,7 @@ class TrainerController < ApplicationController
     begin
       @trainer=Trainer.find(params[:id])
     rescue
-      redirect_to seminar_index_path 
+      redirect_to trainer_index_path 
     end
   end
 end

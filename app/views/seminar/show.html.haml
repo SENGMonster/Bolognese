@@ -14,19 +14,7 @@
 .space
 
 %h2="WAS DICH ERWARTET"
-- @seminar.infoitems.each do |i|
-  %div{class: cycle('left', 'right')}
-    .info_item
-      %img{src: i.avatar.url}
-      .text
-        %h3=i.title        
-        %p
-          =i.short_description.html_safe
-          %br
-          %br
-          %a{class: "customLink button-green", href: seminar_detail_path(id: i.id)}="mehr davon!"
-      .clear
-
+= render 'preview_info_items.html.haml', seminar: @seminar, exclude: -99
 .space
 
 %h2="INVESTITIONEN"

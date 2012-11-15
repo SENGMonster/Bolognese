@@ -16,7 +16,7 @@ class BookingController < ApplicationController
       @termin = Termine.find(@reservation.termin_id)    
 
       @reservation.paymentmode=Paymentmode.first
-      @reservation.attendee_id=@attendee
+      @reservation.attendee=@attendee
 
       @reservation.valid?
 

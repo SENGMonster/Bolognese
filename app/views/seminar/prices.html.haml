@@ -1,0 +1,14 @@
+%h1{style:'margin-bottom: 30px'}="#{@seminar.title} Termine"
+
+.termine  
+  %h2="Termine"
+
+  .prices
+    %h2="Preise"
+
+.termine_location
+  = render 'location', termin: @seminar.termines.first
+
+
+
+= render 'detail_menu', seminar: @seminar

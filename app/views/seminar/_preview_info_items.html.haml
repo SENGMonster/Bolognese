@@ -1,0 +1,13 @@
+- seminar.infoitems.each do |i|
+  - if i.id != exclude
+    %div{class: cycle('left', 'right')}
+      .info_item
+        %img{src: i.avatar.url}
+        .text
+          %h3=i.title        
+          %p
+            =i.short_description.html_safe
+            %br
+            %br
+            %a{class: "customLink button-green", href: seminar_detail_path(id: i.id)}="mehr davon!"
+        .clear

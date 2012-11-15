@@ -1,7 +1,11 @@
 -i = @infoitem
-.detail_item
-  %h1=i.seminar.title
 
+.row
+  %h1{style: "float: left"}=i.seminar.title
+  = render 'detail_menu', seminar: i.seminar
+  .clear
+
+.detail_item
   %h3= i.title
 
   .info_item_pic
@@ -10,13 +14,27 @@
   .info_item_info_text  
     =i.description.html_safe
 
-.detail_items_menu
-  %ul.seminar_menu
-    %li
-      %a{class: "customLink", href: seminar_show_path(id: i.seminar.id)}="Übersicht"
-    - i.seminar.infoitems.each do |i|
-      %li
-        %a{class: "customLink", href: seminar_detail_path(id: i.id)}
-          =i.menu_title
-    %li
-      %a{class: "customLink", href: seminar_prices_path(id: i.seminar.id)}="Termine & Preise"
+
+.termine_sidebar
+  / %h3="Termine"
+
+  -i.seminar.termines.each do |t|
+    .termin
+      .termin_head="#{I18n.l t.start_date, format: :month}  #{t.start_date.year}"
+      .date
+        %p
+          ="#{I18n.l(t.start_date, format: :short)} - #{I18n.l t.end_date, format: :short}"
+          %br
+          =i.seminar.title
+          %br
+      .clear
+      .buy_termin
+        = link_to "jetzt anmelden", booking_book_path(termin_id: t.id)
+
+  .space
+
+  / %h3="Kosten"
+  
+
+= render 'preview_info_items.html.haml', seminar: i.seminar, exclude: i.id
+

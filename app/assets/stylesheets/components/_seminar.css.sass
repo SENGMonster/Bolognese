@@ -26,17 +26,7 @@
     padding: 10px
     text-align: right
     
-.seminar_menu
-  margin-top: 90px
-  margin-left: 10px
-  li
-    border-bottom: 1px solid $dark
-    padding: 10px  0px
-    &:first-child
-      padding-top: 0px
-    &:last-child
-      border-bottom: none
-      padding-bottom: 0px
+
 
 .info_text
   +column(6)
@@ -100,7 +90,7 @@
       color: $white
       text-align: center
       font-size: 11pt
-      padding-left: 10px
+      padding-left: 15px
 
 .image_grid
   list-style: none
@@ -147,9 +137,7 @@
 
 
 .detail_item
-  +column(6)
-  float: left
-
+  +column(6)  
   h3
     margin: 20px 0px
   img
@@ -158,6 +146,35 @@
     margin-right: 20px
     margin-bottom: 20px
 
-
-.detail_items_menu
+.seminar_menu 
+  float: left
+  margin-left: 30px
+  li
+    padding: 10px  
+    float: left
+    
+.termine_sidebar
   +last-column(2)
+
+  text-align: right
+
+  .termin
+    float: right
+    width: 200px
+    .termin_head
+      font-weight: bold
+      font-size: 13pt
+      margin-bottom: 20px
+    .date      
+      float: none
+      width: auto
+    p
+      margin: 0px
+    .buy_termin  
+      float: right
+      margin-right: 0px
+      margin-top: 5px
+      width: 120px
+      a
+        padding-left: 0px
+        padding-right: 10px

@@ -47,7 +47,7 @@
             %td{style: "vertical-align: top"}="Kommentar (optional)"
             %td
               = fr.text_area :comment, rows: 5
-              = fr.hidden_field :termin_id, value: @termin.id
+              = fr.hidden_field :termine_id, value: @termin.id
           %tr
             %td="Preiskategorie"
             %td
@@ -62,7 +62,7 @@
                 ="Hiermit bestätige ich dass ich die Seminarbedingungen gelesen und akzeptiert habe und dass ich mich verbindlich anmelde."
         %tr
           %td
-            = f.submit 'Anmelden'
+            = f.submit 'Anmelden', class: "button-dark"
           %td
 
 

@@ -13,7 +13,7 @@ class BookingController < ApplicationController
     begin
       @attendee=Attendee.new(params[:attendee])
       @reservation=Reservation.new(params[:reservation])
-      @termin = Termine.find(@reservation.termin_id)    
+      @termin = Termine.find(@reservation.termine_id)    
 
       @reservation.paymentmode=Paymentmode.first
       @reservation.attendee=@attendee
@@ -23,12 +23,14 @@ class BookingController < ApplicationController
       respond_to do |format|
         if @attendee.save && @reservation.save
           format.html { redirect_to '/booking/succesfull_booking'}
+          BookingNotification.confirm(@attendee, @reservation).deliver
         else
           format.html { render action: "book" }
         end
       end
-    rescue => e      
-      redirect_to seminar_index_path
+    rescue => e
+      binding.pry
+      #redirect_to seminar_index_path
     end
   end
 

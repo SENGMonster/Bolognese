@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
   create_table "reservations", :force => true do |t|
     t.date     "day_of_payment"
     t.text     "comment"
-    t.integer  "termin_id"
+    t.integer  "termine_id"
     t.integer  "attendee_id"
     t.string   "paymentmode_id"
     t.datetime "created_at",     :null => false

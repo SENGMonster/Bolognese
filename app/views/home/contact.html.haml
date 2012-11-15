@@ -1,21 +1,53 @@
 %h1="Kontakt"
+.space
+.contact_form
+  = form_for @message, :url => home_create_contact_email_msg_path do |form| 
+    %fieldset.fields
+      %table
+        %tr
+          %td="Ihr Name"
+          %td= form.text_field :name 
+        %tr
+          %td="Ihre Email"
+          %td= form.text_field :email
+        %tr
+          %td="Betreff" 
+          %td= form.text_field :subject
+        %tr
+          %td="Nachricht"
+          %td= form.text_area :body 
+      
 
-= form_for @message, :url => home_create_contact_email_msg_path do |form| 
-  %fieldset.fields
-    %table
-      %tr
-        %td="Ihr Name"
-        %td= form.text_field :name 
-      %tr
-        %td="Ihre Email"
-        %td= form.text_field :email
-      %tr
-        %td="Betreff" 
-        %td= form.text_field :subject
-      %tr
-        %td="Nachricht"
-        %td= form.text_area :body 
-    
+      = form.submit "Abschicken" , class: "button-dark", style: "margin-left: 450px"
 
-    = form.submit "Abschicken." , class: "button-dark"
+.contact_items
+  %table
+    %tr
+      %td
+        =image_tag("Icons/Standort.png", class: 'icon')
+      %td
+        NLP Lifetuning
+        %br
+        Am Berg 5
+        %br
+        35083 Wetter
+    %tr
+      %td
+        =image_tag("Icons/Telefon.png", class: 'icon')
+      %td
+        01258345
+    %tr
+      %td
+        =image_tag("Icons/Skype.png", class: 'icon')
+      %td
+        Hypnovision
+    %tr
+      %td
+        =image_tag("Icons/Mail.png", class: 'icon')
+      %td
+        info@hypnovision.de
+
+  %br
+  %br
+  %img{src: "http://maps.googleapis.com/maps/api/staticmap?center='Am Berg 5, 35083 Wetter'&zoom=8&size=250x250&markers='Am Berg 5, 35083 Wetter'&sensor=false"}
 

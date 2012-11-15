@@ -1,2 +1,21 @@
-%h1 Home#contact
-%p Find me in app/views/home/contact.html.haml
+%h1="Kontakt"
+
+= form_for @message, :url => home_create_contact_email_msg_path do |form| 
+  %fieldset.fields
+    %table
+      %tr
+        %td="Ihr Name"
+        %td= form.text_field :name 
+      %tr
+        %td="Ihre Email"
+        %td= form.text_field :email
+      %tr
+        %td="Betreff" 
+        %td= form.text_field :subject
+      %tr
+        %td="Nachricht"
+        %td= form.text_area :body 
+    
+
+    = form.submit "Abschicken." , class: "button-dark"
+

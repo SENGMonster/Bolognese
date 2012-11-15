@@ -1,6 +1,7 @@
--if notice
-  #notice
-    %p = notice
--if alert
-  #alert
-    %p = alert
+.notice
+  -if notice
+    #notice
+      %p= notice
+  -if alert
+    #alert
+      %p= alert

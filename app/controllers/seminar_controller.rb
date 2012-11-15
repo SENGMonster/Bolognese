@@ -22,11 +22,4 @@ class SeminarController < ApplicationController
   def booking
   end
 
-  def prices
-    begin
-      @seminar=Seminar.find(params[:id])
-    rescue
-      redirect_to seminar_index_path 
-    end
-  end
 end

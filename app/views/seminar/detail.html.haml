@@ -2,16 +2,24 @@
 
 .row
   %h1{style: "float: left"}=i.seminar.title
-  = render 'detail_menu', seminar: i.seminar
-  .clear
+  %ul.seminar_menu
+    %li
+      %a{class: "customLink", href: seminar_show_path(id: i.seminar.id)}="Übersicht"
+    - i.seminar.infoitems.each do |item|
+      %li
+        -aclass="customLink"
+        -aclass+=" active" if @infoitem.id == item.id
+        %a{class: aclass, href: seminar_detail_path(id: item.id)}
+          =item.menu_title
+  .space
 
 .detail_item
-  %h3= i.title
 
   .info_item_pic
     %img{src: i.avatar.url}
 
   .info_item_info_text  
+    %h3= i.title
     =i.description.html_safe
 
 
@@ -31,10 +39,16 @@
       .buy_termin
         = link_to "jetzt anmelden", booking_book_path(termin_id: t.id)
 
-  .space
+  .clear{style: 'height: 20px'}
 
-  / %h3="Kosten"
-  
+  %h3="Kosten"
+  -i.seminar.prices.each do |p|
+    %p
+      %strong=p.priceclass.name
+      %br
+      =p.price
 
+
+.space
 = render 'preview_info_items.html.haml', seminar: i.seminar, exclude: i.id
 

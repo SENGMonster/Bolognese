@@ -11,18 +11,12 @@ Lifetuning::Application.routes.draw do
   post "booking/do_booking"
 
   get "trainer/index"
-
   get "trainer/show"
-
   get "seminar/index"
-
   get "seminar/show"
-
   get "seminar/detail"
-  get "home/success"
-
   get "seminar/booking"
-  get "seminar/prices"
+
 
   ActiveAdmin.routes(self)
 
@@ -32,6 +26,9 @@ Lifetuning::Application.routes.draw do
   get "home/about"
   get "home/contact"
   get "home/impressum"
+  get "home/success"
+
+  post "home/create_contact_email_msg"
 
 
   # The priority is based upon order of creation:

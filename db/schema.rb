@@ -103,6 +103,15 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
     t.datetime "avatar_updated_at"
   end
 
+  create_table "messages", :force => true do |t|
+    t.string   "name"
+    t.text     "body"
+    t.string   "subject"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "paymentmodes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false

@@ -58,5 +58,18 @@ module Lifetuning
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+
+    ActionMailer::Base.raise_delivery_errors = true
+    ActionMailer::Base.delivery_method = :smtp
+
+    ActionMailer::Base.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "localhost",
+    :authentication => :plain,
+    :user_name => "herrschroeder1234@gmail.com",
+    :password => "Hypnovision",
+    }
   end
 end

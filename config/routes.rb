@@ -1,5 +1,7 @@
 Lifetuning::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   resources :attendees
 
   resources :paymentmodes
@@ -19,9 +21,7 @@ Lifetuning::Application.routes.draw do
 
 
   ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
+  
   get "home/index"
   get "home/about"
   get "home/contact"

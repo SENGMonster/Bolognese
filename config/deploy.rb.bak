@@ -52,7 +52,7 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
 set :application, "rails1"
 
 # repository location
-set :repository, "ssh://git@github.com/SENGMonster/Bolognese.git"
+set :repository, "https://github.com/SENGMonster/Bolognese.git"
 
 # :subversionn or :git
 set :scm, :git

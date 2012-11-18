@@ -1,7 +1,0 @@
-%ul.seminar_menu
-  %li
-    %a{class: "customLink", href: seminar_show_path(id: seminar.id)}="Übersicht"
-  - seminar.infoitems.each do |i|
-    %li
-      %a{class: "customLink", href: seminar_detail_path(id: i.id)}
-        =i.menu_title

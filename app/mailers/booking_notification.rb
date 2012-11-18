@@ -10,4 +10,9 @@ class BookingNotification < ActionMailer::Base
     mail(:subject => "NLP Lifetuning Buchung", :to => attendee.email)
   end
 
+  def stefan(attendee, reservation)
+    @attendee = attendee
+    @reservation = reservation
+    mail(:subject => "NLP Lifetuning Buchung", :to => attendee.email)
+  end
 end

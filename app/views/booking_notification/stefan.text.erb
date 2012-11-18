@@ -1,0 +1,17 @@
+Es gibt eine neue Anmeldung für <%= @reservation.termine.seminar.title %> im <%= I18n.l @reservation.termine.start_date, format: :month %> <%= @reservation.termine.start_date.year %>
+
+Der neue Padawan:
+  <%= @attendee.firstname %>
+  <%= @attendee.lastname %>
+  <%= @attendee.streetnr %>
+  <%= @attendee.plz %>  <%= @attendee.city %>
+
+Preiskategorie:
+  <%= @reservation.price.price %> <%= @reservation.price.priceclass.name %>
+
+Email:
+  <%= @attendee.email %>
+Telefon
+  <%= @attendee.tel %>
+
+Kümmerse dich drum wa?

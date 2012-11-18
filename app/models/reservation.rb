@@ -6,4 +6,8 @@ class Reservation < ActiveRecord::Base
   belongs_to :price
 
   validates_presence_of :checked, :price_id, :termine_id
+
+  def to_s
+    "#{r.termine.seminar.title} - #{r.termine.start_date.month} #{r.termine.start_date} : #{r.price.price} #{r.price.priceclass.name}"
+  end
 end

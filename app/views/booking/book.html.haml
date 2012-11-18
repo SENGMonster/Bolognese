@@ -12,23 +12,24 @@
       
       %table
         %tr
-          %td="Nachname"
-          %td= f.text_field :lastname
-        %tr
           %td="Vorname"
           %td= f.text_field :firstname
         %tr
+          %td="Nachname"
+          %td= f.text_field :lastname
+ 
+        %tr
           %td="Geburtsdatum"
-          %td= f.date_select :birthday
+          %td= f.date_select :birthday, end_year: Time.now.year - 100, start_year: Time.now.year
         %tr
           %td="Straße und Hausnummer"
           %td=f.text_field :streetnr
         %tr
-          %td="Stadt"
-          %td= f.text_field :city
-        %tr
           %td="PLZ"
           %td= f.text_field :plz
+        %tr
+          %td="Stadt"
+          %td= f.text_field :city
         %tr
           %td="Email"
           %td= f.email_field :email

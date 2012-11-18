@@ -18,12 +18,15 @@ class BookingController < ApplicationController
       @reservation.paymentmode=Paymentmode.first
       @reservation.attendee=@attendee
 
-      @reservation.valid?
+      
 
       respond_to do |format|
-        if @attendee.save && @reservation.save
-          format.html { redirect_to '/booking/succesfull_booking'}
-          BookingNotification.confirm(@attendee, @reservation).deliver
+        if @reservation.valid? && @attendee.valid?
+          if @attendee.save && @reservation.save
+            format.html { redirect_to '/booking/succesfull_booking'}
+            BookingNotification.confirm(@attendee, @reservation).deliver
+            BookingNotification.stefan(@attendee, @reservation).deliver
+          end
         else
           format.html { render action: "book" }
         end

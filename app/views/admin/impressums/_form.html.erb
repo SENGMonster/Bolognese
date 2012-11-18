@@ -1,0 +1,13 @@
+ 
+ <%= semantic_form_for [:admin, @impressum], :builder => ActiveAdmin::FormBuilder do |f|
+
+    puts f.object.errors.inspect     
+
+
+      f.inputs do
+        f.input :text,  :input_html => { :class => 'mceEditor', :size => "80x15" }
+      end
+      
+      f.buttons
+    end 
+      %>

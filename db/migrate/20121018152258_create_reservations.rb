@@ -3,7 +3,7 @@ class CreateReservations < ActiveRecord::Migration
     create_table :reservations do |t|
       t.date :day_of_payment
       t.text :comment
-      t.integer :termin_id
+      t.integer :termine_id
       t.integer :attendee_id
       t.string :paymentmode_id
 

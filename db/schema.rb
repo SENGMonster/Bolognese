@@ -148,10 +148,10 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
   end
 
   create_table "prices", :force => true do |t|
-    t.decimal  "price"
+    t.decimal  "price",         :precision => 10, :scale => 0
     t.integer  "priceclass_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.integer  "seminar_id"
   end
 

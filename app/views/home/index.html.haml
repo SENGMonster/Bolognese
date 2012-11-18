@@ -1,3 +1,92 @@
+.index_slogan_picture
+  =image_tag('index2.jpg')
 %h1
-  NLP Lifetuning
-  
+  Wir zeigen dir den Weg zum Erfolg. 
+
+.six
+  Mit einer Hypnose oder NLP-Ausbildung bei uns 
+  %strong="bekommst du viel mehr wie nur eine Ausbildung in NLP oder Hypnose."
+  Wir haben für dich die Ausbildungen so gestaltet, dass du optimal gefördert wirst und dein Potential voll entfalten oder wecken kannst. 
+  %br
+  %br
+  Du wirst nach einer NLP-Ausbildung bei uns vielleicht 
+  %strong="dein Leben und deinen Beruf aus einer ganz anderen Sicht sehen"
+  und möglicherweise gibt dir das die Wahlmöglichkeiten, die du schon lange gesucht hast. 
+  Mit dieser 
+  %strong="Flexibilität, dem neuen Wissen und den vielen Werkzeugen, "
+  die du bei uns in der NLP- oder Hypnoseausbildung bekommst, kannst du dein Potenial völlig entfalten und dein Leben tunen. 
+
+.last-two
+  %p
+    %strong
+      Du musst dein Ändern leben.
+    %br
+    Rainer Maria Rilke
+
+.space
+
+.vierhundert
+  %h2="Termine"
+  - Termine.limit(3).each do |t|
+    .termin
+      .icon
+        =I18n.l t.start_date, format: :month
+        %br
+        =t.start_date.year
+      .date
+        %p
+          ="#{I18n.l(t.start_date, format: :short)} - #{I18n.l t.end_date, format: :short}"
+          %br
+          %strong=t.seminar.title
+          %br
+      .clear
+      .buy_termin
+        = link_to "jetzt anmelden", booking_book_path(termin_id: t.id)
+
+.vierhundert
+  %h2="Unsere Philosophie"
+  =image_tag('hoehemini.jpg')
+  %p
+    Durch kompetente Trainer, die ihren Beruf lieben,
+    %strong="sich ständig und stetig weiterbilden"
+    und daran interessiert sind, den Teilnehmern 
+    %strong="einen echten Profit zu liefern"
+    , wird NLP-Lifetuning geprägt.
+    Mit viel Leidenschaft arbeiten wir konsequent daran, 
+    %strong="jedes Seminar für dich noch ein Stückchen besser zu machen."
+  =link_to "mehr..", home_about_path, class: "button-green"
+
+.vierhundert
+  %h2="Unser Erfolgskonzept"
+  =image_tag('erfolgmini.jpg')
+  %p
+    Lerne
+    %strong="deine Kommunikation effektiv zu verbessern,"
+    und entdecke die vielen Möglichkeiten die NLP und Hypnose im Beruf, Coaching, Vertrieb und auch Privatleben bringen.
+    %br
+    Durch eine NLP-Ausbildung bei uns wirst du lernen mit den verschiedensten Situationen 
+    %strong="selbstbewusst und erfolgreich umzugehen." 
+  =link_to "mehr..", home_about_path, class: "button-green"
+
+.space
+
+%h2="Trainer"
+.big-content
+  - Trainer.limit(4).each do |trainer|
+    .index_trainer_preview
+      %img{src: trainer.profile_picture.url}
+      %p
+        %strong=trainer.name
+        %br
+        =trainer.subtitle
+.index_trainer_preview_text
+  %p
+    Erfolgreiche Seminare benötigen kompetente Trainer die ihre Arbeit verstehen. Unsere 
+    %strong="Trainer sind Spezialisten"
+    auf ihrem Gebiet und bringen viel Erfahrung mit.
+    Uns ist es eine 
+    %strong="Herzensangelegenheit" 
+    dir in deinem Seminar die Möglichkeit zu geben 
+    %strong
+      von Experten zu lernen.
+

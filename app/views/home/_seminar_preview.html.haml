@@ -1,5 +1,7 @@
 .seminar_img_preview
-  - Seminar.limit(2).each do |s|
+  - Seminar.limit(3).each do |s|
     %a{href: seminar_show_path(id: s.id)}
-      %img{src: s.indexpic.url}
+      .img{style: "background: transparent url('#{s.indexpic.url}') center center"}
+      .clear
       %p=s.title
+    .clear

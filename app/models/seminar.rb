@@ -5,7 +5,7 @@ class Seminar < ActiveRecord::Base
   has_many :pictures, :as => :picturable
   has_many :prices
   belongs_to :category
-  has_attached_file :indexpic
+  has_attached_file :indexpic, path: ":rails_root/public/seminar/:id/:style/:filename", url: "/seminar/:id/:style/:filename"
 
   accepts_nested_attributes_for :infoitems, :termines, :pictures, :prices
 

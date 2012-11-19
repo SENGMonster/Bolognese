@@ -59,7 +59,7 @@ module Lifetuning
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     config.assets.paths << Rails.root.join("tiny_mce")
-    config.assets.precompile << '*.js'
+    config.assets.precompile << 'tiny_mce/*.js'
 
 
     ActionMailer::Base.raise_delivery_errors = true

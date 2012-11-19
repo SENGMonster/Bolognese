@@ -2,7 +2,7 @@ class BookingNotification < ActionMailer::Base
   
 
   default :from => "herrschroeder1234@gmail.com"
-  default :to => "kontakt@ramonaleenings.com"
+  default :to => "info@hypnovision.de"
 
   def confirm(attendee, reservation)
     @attendee = attendee

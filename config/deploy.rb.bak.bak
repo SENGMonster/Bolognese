@@ -42,9 +42,9 @@ end
 set :user, "user62571957"
 
 
-# password to login to the target server
-set :password, "4tq1I3YnaR"
-
+# allow SSH-Key-Forwarding
+set :ssh_options, { :forward_agent => true }  
+ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
 
 ## Application name and repository
 
@@ -52,7 +52,7 @@ set :password, "4tq1I3YnaR"
 set :application, "rails1"
 
 # repository location
-set :repository, "ssh://git@github.com/SENGMonster/Bolognese.git"
+set :repository, "https://github.com/SENGMonster/Bolognese.git"
 
 # :subversionn or :git
 set :scm, :git

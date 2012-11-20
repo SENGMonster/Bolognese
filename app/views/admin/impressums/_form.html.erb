@@ -5,7 +5,7 @@
 
 
       f.inputs do
-        f.input :text,  :input_html => { :class => 'mceEditor', :size => "80x15" }
+        f.input :text, :as => :rich, :config => { :height => '400px' }
       end
       
       f.buttons

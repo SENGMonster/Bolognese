@@ -7,7 +7,7 @@ gem 'rails', '3.1.3'
 
 gem 'mysql2', '>0.3'
 gem 'pry'
-gem 'sass-rails', "<3.2"
+gem 'sass-rails', "3.1.5"
 
 gem 'paperclip'
 gem 'devise'

@@ -73,7 +73,7 @@
 %h2="Trainer"
 .big-content
   - Trainer.limit(4).each do |trainer|
-    .index_trainer_preview
+    %a{href: trainer_show_path(id: trainer.id), class: 'index_trainer_preview'}
       %img{src: trainer.profile_picture.url}
       %p
         %strong=trainer.name

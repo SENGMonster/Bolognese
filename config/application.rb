@@ -68,7 +68,7 @@ module Lifetuning
     ActionMailer::Base.smtp_settings = {
         :address => "mail.nlp-lifetuning.de",
         :port => 587,
-        :domain => "mail.nlp-lifetuning.de",
+        :domain => "nlp-lifetuning.de",
         :authentication => :plain,
         :user_name => "web1755p4",
         :password => "Seppel1234!"

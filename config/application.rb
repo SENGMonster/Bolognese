@@ -71,7 +71,9 @@ module Lifetuning
         :domain => "nlp-lifetuning.de",
         :authentication => :plain,
         :user_name => "web1755p4",
-        :password => "Seppel1234!"
+        :password => "Seppel1234!",
+        :enable_starttls_auto => true,
+        :openssl_verify_mode  => 'none'
      }
   end
 end

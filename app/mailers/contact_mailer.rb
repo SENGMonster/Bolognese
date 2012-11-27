@@ -1,6 +1,6 @@
 class ContactMailer < ActionMailer::Base
   
-  default :from => "herrschroeder1234@gmail.com"
+  default :from => "info@nlp-lifetuning.de"
   default :to => "info@hypnovision.de"
 
   def new_message(message)

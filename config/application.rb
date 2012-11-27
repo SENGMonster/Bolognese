@@ -66,12 +66,12 @@ module Lifetuning
     ActionMailer::Base.delivery_method = :smtp
 
     ActionMailer::Base.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => "localhost",
-    :authentication => :plain,
-    :user_name => "herrschroeder1234@gmail.com",
-    :password => "Hypnovision",
-    }
+        :address => "mail.nlp-lifetuning.de",
+        :port => 587,
+        :domain => "mail.nlp-lifetuning.de",
+        :authentication => :plain,
+        :user_name => "web1755p4",
+        :password => "Seppel1234!"
+     }
   end
 end

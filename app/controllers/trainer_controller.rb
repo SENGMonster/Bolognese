@@ -1,6 +1,6 @@
 class TrainerController < ApplicationController
   def index
-    @trainers = Trainer.all
+    @trainers = Trainer.order('updated_at DESC').all
   end
 
   def show

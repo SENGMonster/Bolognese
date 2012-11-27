@@ -4,24 +4,38 @@
   Wir zeigen dir den Weg zum Erfolg. 
 
 .six
-  Mit einer Hypnose oder NLP-Ausbildung bei uns 
+  Mit einer 
+  %strong
+    Hypnose oder NLP-Ausbildung bei uns 
   %strong="bekommst du viel mehr wie nur eine Ausbildung in NLP oder Hypnose."
   Wir haben für dich die Ausbildungen so gestaltet, dass du optimal gefördert wirst und dein Potential voll entfalten oder wecken kannst. 
   %br
   %br
-  Du wirst nach einer NLP-Ausbildung bei uns vielleicht 
+  Du wirst nach einer
+  %strong
+    NLP-Ausbildung
+  bei uns vielleicht 
   %strong="dein Leben und deinen Beruf aus einer ganz anderen Sicht sehen"
   und möglicherweise gibt dir das die Wahlmöglichkeiten, die du schon lange gesucht hast. 
   Mit dieser 
   %strong="Flexibilität, dem neuen Wissen und den vielen Werkzeugen, "
-  die du bei uns in der NLP- oder Hypnoseausbildung bekommst, kannst du dein Potenial völlig entfalten und dein Leben tunen. 
+  die du bei uns in der 
+  %strong
+    NLP- oder Hypnoseausbildung 
+  bekommst, kannst du dein Potenial völlig entfalten und dein Leben tunen. 
 
 .last-two
   %p
     %strong
-      Du musst dein Ändern leben.
+      If you always do 
+      %br
+      What you always did
+      %br
+      You will always get
+      %br
+      What you always got
     %br
-    Rainer Maria Rilke
+    Abraham Lincoln
 
 .space
 
@@ -45,7 +59,8 @@
 
 .vierhundert
   %h2="Unsere Philosophie"
-  =image_tag('hoehemini.jpg')
+  %a{href: home_about_path}
+    =image_tag('hoehemini.jpg')
   %p
     Durch kompetente Trainer, die ihren Beruf lieben,
     %strong="sich ständig und stetig weiterbilden"
@@ -58,7 +73,8 @@
 
 .vierhundert
   %h2="Unser Erfolgskonzept"
-  =image_tag('erfolgmini.jpg')
+  %a{href: home_about_path}
+    =image_tag('erfolgmini.jpg')
   %p
     Lerne
     %strong="deine Kommunikation effektiv zu verbessern,"
@@ -66,13 +82,13 @@
     %br
     Durch eine NLP-Ausbildung bei uns wirst du lernen mit den verschiedensten Situationen 
     %strong="selbstbewusst und erfolgreich umzugehen." 
-  =link_to "mehr..", home_about_path, class: "button-green"
+  =link_to "mehr..", home_success_path, class: "button-green"
 
 .space
 
 %h2="Trainer"
 .big-content
-  - Trainer.limit(4).each do |trainer|
+  - Trainer.order('updated_at DESC').limit(4).each do |trainer|
     %a{href: trainer_show_path(id: trainer.id), class: 'index_trainer_preview'}
       %img{src: trainer.profile_picture.url}
       %p

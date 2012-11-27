@@ -2,7 +2,8 @@
   - if i.id != exclude
     %div{class: cycle('left', 'right')}
       .info_item
-        %img{src: i.avatar.url}
+        %a{href: seminar_detail_path(id: i.id)}
+          %img{src: i.avatar.url}
         .text
           %h3=i.title        
           %p

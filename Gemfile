@@ -15,6 +15,7 @@ gem 'activeadmin'
 gem 'country-select'
 gem 'client_side_validations'
 gem 'rich'
+gem 'friendly_id'
 
 
 gem 'geocoder'

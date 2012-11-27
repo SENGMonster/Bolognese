@@ -1,3 +1,8 @@
+.logo
+  float: left
+.fb-like
+  float: right
+  margin-top: 75px
 .menu
   +row
   background-color: $green  
@@ -17,6 +22,12 @@
     color: $dark
     font-weight: bold
     font-size: 11pt
+
+.menu li .social_items
+  float: right
+  padding-right: 0px
+.menu a .social_items
+  padding-right: 4px
 
 .footer
   +row
@@ -44,13 +55,14 @@
 .seminar_footer
   +column(4, $padding: 20px)
 .contact_footer
-  +column(2)
+  +column(1)
+
 .stefan_footer  
-  +last-column(2, $differing-right-padding: 20px)
+  +last-column(3, $differing-right-padding: 20px)
 
   img
     float: left
-    margin-left: 40px
+    margin-left: 55px
   table
     float: left
   td

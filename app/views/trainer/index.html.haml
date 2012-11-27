@@ -7,7 +7,7 @@
 .space
 - @trainers.each do |t|
   %div{class: cycle('left', 'right')}
-    %a{href: trainer_show_path(id: t.id), class: 'trainer_preview_item'}
+    %a{href: "/trainer/#{t.slug}", class: 'trainer_preview_item'}
       %img{src: "#{t.profile_picture.url}"}
       .text
         %p

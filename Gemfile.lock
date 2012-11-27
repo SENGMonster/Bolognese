@@ -77,6 +77,7 @@ GEM
     fastercsv (1.5.5)
     formtastic (2.1.1)
       actionpack (~> 3.0)
+    friendly_id (4.0.9)
     fssm (0.2.9)
     geocoder (1.1.2)
     haml (3.1.6)
@@ -199,6 +200,7 @@ DEPENDENCIES
   country-select
   crispy-grid
   devise
+  friendly_id
   geocoder
   haml-rails
   jquery-rails

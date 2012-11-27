@@ -1,5 +1,10 @@
 .header
-  =image_tag "YYLogo.png"
+  .logo
+    %a{href: "#{home_index_path}"}
+      =image_tag "YYLogo.png"
+  .fb-like
+    %iframe{src: "http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.nlp-lifetuning.de&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80", scrolling: "no", frameborder: "0", style: "border:none; overflow:hidden; width:100%; height:80px;", allowTransparency: "true"}
+  .clear
   .menu
     %ul
       %li.home_menu_item
@@ -12,10 +17,18 @@
       %li
         %a{href: "#{trainer_index_path}"}="Trainer"
       %li
-        %a{href: "#{home_success_path}"}="Unsere Erfolgskonzept"
+        %a{href: "#{home_success_path}"}="Unser Erfolgskonzept"
       %li
         %a{href: "#{home_contact_path}"}="Kontakt"
       %li
         %a{href: "#{home_impressum_path}"}="Impressum"
+      %li.social_items
+        %a{href: 'http://de-de.facebook.com/pages/NLP-Lifetuning/131657646947783', target: "_blank"}
+          =image_tag('icon_fb.png')
+        %a{href: 'https://twitter.com/NLPLifetuning', target: "_blank"}
+          =image_tag('icon_twitter.png')
+        %a{href: "https://www.xing.com/companies/nlp-lifetuning", target: "_blank"}
+          =image_tag('icon_xing.png')
+
 
     .clear

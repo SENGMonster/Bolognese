@@ -88,7 +88,7 @@
 %h1 NLP Lifetuning Seminare
 
 %p.intro_text
-  Hier findest Du unser Seminarangebot was wir für Dich anbieten. Wenn Du noch fragen hast ob und welche NLP-Ausbildung für Dich die richtige ist, oder ob es eines der andere Seminare ist welches für Dich das Beste ist dann kontaktiere uns, wir helfen Dir gerne bei der Auswahl der richtigen Ausbildung für Dich.
+  Hier findest Du unser Seminarangebot was wir für Dich anbieten. Wenn Du noch Fragen hast ob und welche NLP-Ausbildung für Dich die richtige ist, oder ob es eines der andere Seminare ist welches für Dich das Beste ist dann kontaktiere uns, wir helfen Dir gerne bei der Auswahl der richtigen Ausbildung für Dich.
 / .seminar_index_menu
 /   = link_to "Alle", "#", rel: 'all', class: "seminarSwitcher"
 /   - counter = 1
@@ -122,7 +122,7 @@
             .text
               %p
                 %strong
-                  =link_to s.title, seminar_show_path(id: s.id)
+                  =link_to s.title, "/seminar/#{s.slug}"
               %p=s.subtitle
           
             .fun_facts

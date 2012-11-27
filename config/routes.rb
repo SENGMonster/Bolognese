@@ -16,8 +16,10 @@ Lifetuning::Application.routes.draw do
 
   get "trainer/index"
   get "trainer/show"
+  match "/trainer/:id" => "trainer#show"
   get "seminar/index"
   get "seminar/show"
+  match "/seminar/:id" => "seminar#show"
   get "seminar/detail"
   get "seminar/booking"
 

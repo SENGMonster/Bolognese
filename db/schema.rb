@@ -89,6 +89,17 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "friendly_id_slugs", :force => true do |t|
+    t.string   "slug",                         :null => false
+    t.integer  "sluggable_id",                 :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
+  add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
+
   create_table "impressums", :force => true do |t|
     t.text     "text"
     t.datetime "created_at", :null => false
@@ -192,7 +203,10 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
     t.string   "indexpic_content_type"
     t.integer  "indexpic_file_size"
     t.datetime "indexpic_updated_at"
+    t.string   "slug"
   end
+
+  add_index "seminars", ["slug"], :name => "index_seminars_on_slug"
 
   create_table "termines", :force => true do |t|
     t.date     "start_date"
@@ -216,6 +230,9 @@ ActiveRecord::Schema.define(:version => 2012101808991239) do
     t.string   "subtitle"
     t.string   "contact_data"
     t.string   "contact_email"
+    t.string   "slug"
   end
+
+  add_index "trainers", ["slug"], :name => "index_trainers_on_slug"
 
 end

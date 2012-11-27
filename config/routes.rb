@@ -18,10 +18,11 @@ Lifetuning::Application.routes.draw do
   get "trainer/show"
   match "/trainer/:id" => "trainer#show"
   get "seminar/index"
-  get "seminar/show"
-  match "/seminar/:id" => "seminar#show"
+  get "seminar_showroom/show"
+  match "/seminar_showroom/:id" => "seminar_showroom#show"
   get "seminar/detail"
   get "seminar/booking"
+  get "seminar/agb"
 
 
   ActiveAdmin.routes(self)

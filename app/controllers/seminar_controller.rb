@@ -3,14 +3,6 @@ class SeminarController < ApplicationController
     @categories = Category.all
   end
 
-  def show
-    begin
-      @seminar=Seminar.find(params[:id])
-    rescue
-      redirect_to seminar_index_path 
-    end
-  end
-
   def detail
     begin
       @infoitem=Infoitem.find(params[:id])
@@ -20,6 +12,9 @@ class SeminarController < ApplicationController
   end
 
   def booking
+  end
+
+  def agb
   end
 
 end

@@ -60,7 +60,9 @@
             %td{colspan: 2}                
               .space
                 =fr.check_box :checked
-                ="Hiermit bestätige ich dass ich mich verbindlich anmelde."
+                Hiermit bestätige ich dass ich 
+                =link_to "die AGB", seminar_agb_path
+                zur Kenntnis genommen habe, sie akzeptiere, und mich verbindlich anmelde.
         %tr
           %td
             = f.submit 'Anmelden', class: "button-dark"

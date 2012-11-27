@@ -4,7 +4,7 @@
   %h1{style: "float: left"}=i.seminar.title
   %ul.seminar_menu
     %li
-      %a{class: "customLink", href: seminar_show_path(id: i.seminar.id)}="Übersicht"
+      %a{class: "customLink", href: "/seminar_showroom/#{i.seminar.slug}"}="Übersicht"
     - i.seminar.infoitems.each do |item|
       %li
         -aclass="customLink"

@@ -6,7 +6,7 @@
       %ul
         -c.seminars.each do |s|
           %li
-            %a{href: seminar_show_path(id: s.id)}=s.title
+            %a{href: seminar_showroom_show_path(id: s.id)}=s.title
       .clear
 .contact_footer
   %h3
@@ -18,6 +18,8 @@
       =link_to "Trainer", trainer_index_path
     %li
       =link_to "Kontaktformular", home_contact_path
+    %li
+      =link_to "AGB", seminar_agb_path
     %li
       =link_to "Impressum", home_impressum_path
 .stefan_footer
